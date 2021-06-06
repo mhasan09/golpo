@@ -83,7 +83,7 @@
                                 <img src="{% static '' %}images/user/1.jpg" class="img-fluid rounded-circle mr-3"
                                      alt="user">
                                 <div class="caption">
-                                    <h6 class="mb-0 line-height">{{ username }}</h6>
+                                    <h6 class="mb-0 line-height">aa</h6>
                                 </div>
                             </a>
                         </li>
@@ -407,7 +407,7 @@
                     <div class="media-height p-3" data-scrollbar="init">
                         <div class="media align-items-center mb-4">
                             <div class="iq-profile-avatar status-online">
-                                <img class="rounded-circle avatar-50" src="{% static '' %}images/user/01.jpg" alt="">
+                                <img class="rounded-circle avatar-50" src="{% static 'images/user/01.jpg' %}" alt="">
                             </div>
                             <div class="media-body ml-3">
                                 <h6 class="mb-0"><a href="#">Anna Sthesia</a></h6>
@@ -416,7 +416,7 @@
                         </div>
                         <div class="media align-items-center">
                             <div class="iq-profile-avatar">
-                                <img class="rounded-circle avatar-50" src="{% static '' %}images/user/02.jpg" alt="">
+                                <img class="rounded-circle avatar-50" src="{% static 'images/user/02.jpg' %}" alt="">
                             </div>
                             <div class="media-body ml-3">
                                 <h6 class="mb-0"><a href="#">Monty Carlo</a></h6>
@@ -464,11 +464,11 @@
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
                                                     class="ri-close-fill m-0"></i></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="d-flex align-items-center">
+                                        <div class="modal-body" id="status">
+                                            <div class="d-flex align-items-center" >
                                                 <form class="post-text ml-3 w-100" action="javascript:void();">
-                                                    <input type="text" class="form-control rounded"
-                                                           placeholder="Write something here..." style="border:none;">
+                                                    <input type="text" class="form-control rounded" v-model="message"
+                                                           placeholder="test" style="border:none;">
                                                 </form>
                                             </div>
                                             <div class="other-option">
@@ -526,7 +526,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary d-block w-100 mt-3">Post
+                                            <button class="btn btn-primary d-block w-100 mt-3" v-on:click="submitData">Post
                                             </button>
                                         </div>
                                     </div>
@@ -540,7 +540,7 @@
                                 <div class="user-post-data">
                                     <div class="d-flex flex-wrap">
                                         <div class="media-support-user-img mr-3">
-                                            <img class="rounded-circle img-fluid" src="images/user/01.jpg" alt="">
+                                            <img class="rounded-circle img-fluid" src="{% static 'images/user/01.jpg' %}" alt="">
                                         </div>
                                         <div class="media-support-info mt-2">
                                             <h5 class="mb-0 d-inline-block"><a href="#" class="">Anna Sthesia</a></h5>
@@ -638,34 +638,34 @@
                                                         <div class="dropdown-menu">
                                                             <a class="ml-2 mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Like"><img
-                                                                    src="images/icon/01.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/01.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Love"><img
-                                                                    src="images/icon/02.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/02.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
-                                                               data-original-title="Happy"><img src="images/icon/03.png"
+                                                               data-original-title="Happy"><img src="{% static 'images/icon/03.png' %}"
                                                                                                 class="img-fluid"
                                                                                                 alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="HaHa"><img
-                                                                    src="images/icon/04.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/04.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
-                                                               data-original-title="Think"><img src="images/icon/05.png"
+                                                               data-original-title="Think"><img src="{% static 'images/icon/05.png' %}"
                                                                                                 class="img-fluid"
                                                                                                 alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Sade"><img
-                                                                    src="images/icon/06.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/06.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Lovely"><img
-                                                                    src="images/icon/07.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/07.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                         </div>
                                                     </div>
@@ -851,34 +851,34 @@
                                                         <div class="dropdown-menu">
                                                             <a class="ml-2 mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Like"><img
-                                                                    src="images/icon/01.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/01.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Love"><img
-                                                                    src="images/icon/02.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/02.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
-                                                               data-original-title="Happy"><img src="images/icon/03.png"
+                                                               data-original-title="Happy"><img src="{% static 'images/icon/03.png' %}"
                                                                                                 class="img-fluid"
                                                                                                 alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="HaHa"><img
-                                                                    src="images/icon/04.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/04.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
-                                                               data-original-title="Think"><img src="images/icon/05.png"
+                                                               data-original-title="Think"><img src="{% static 'images/icon/05.png' %}"
                                                                                                 class="img-fluid"
                                                                                                 alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title="" data-original-title="Sade"><img
-                                                                    src="images/icon/06.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/06.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="mr-2" href="#" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Lovely"><img
-                                                                    src="images/icon/07.png" class="img-fluid"
+                                                                    src="{% static 'images/icon/07.png' %}" class="img-fluid"
                                                                     alt=""></a>
                                                         </div>
                                                     </div>
@@ -1672,9 +1672,8 @@
         </div>
     </div>
 </footer>
-<!-- Footer END -->
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://unpkg.com/vue@next"></script>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -1717,7 +1716,7 @@
 <script src="{% static 'js/chart-custom.js' %}"></script>
 <!-- Custom JavaScript -->
 <script src="{% static 'js/custom.js' %}"></script>
-<script src="https://unpkg.com/vue@next"></script>
+<script src="{% static 'core/main.js' %}"></script>
 
 </body>
 
