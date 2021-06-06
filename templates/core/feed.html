@@ -3033,15 +3033,34 @@
         },
         methods: {
             submitData() {
-                if (this.message.length>0){
+                if (this.message.length > 0) {
                     var post_dict = {
-                        'post_body' : this.message,
-                        'username' : this.created_by,
-                        'created_at' : 'now'
+                        'post_body': this.message,
+                        'username': this.created_by,
+                        'created_at': 'now'
                     }
                 }
                 console.log(post_dict)
                 this.body = '';
+                console.log("Done")
+                fetch('/api/add_post/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(post_dict),
+
+                })
+                    .then((response) => {
+                        console.log(response)
+
+                    }
+                )
+                    .catch((error) => {
+                    console.log(error)
+                })
             },
         },
     };

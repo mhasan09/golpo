@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.urls import path
 from core import views
+from core import api
 urlpatterns = [
     path('', views.feed, name="feed"),
     path('signin/', views.signin, name="signin"),
+    path('api/add_post/', api.api_POST, name="api_add_post"),
 
 
 ]
