@@ -3,13 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login
-
+from .models import POST
 
 @login_required
 def feed(requests):
     current_user = requests.user
     context = {
-        "username" : current_user
+        "username" : current_user,
     }
     return render(requests, 'core/feed.html', context)
 
