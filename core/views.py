@@ -5,11 +5,17 @@ from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login
 from .models import POST
 
+
 @login_required
 def feed(requests):
+    user_id_list = [requests.user.id]
     current_user = requests.user
+    for i in current_user.UserProfile.follows.all():
+        user_id_list.append(i.user.id)
+    posts = POST.objects.filter(created_by_id__in=user_id_list)
     context = {
-        "username" : current_user,
+        "username": current_user,
+        "posts": posts
     }
     return render(requests, 'core/feed.html', context)
 

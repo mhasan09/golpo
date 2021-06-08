@@ -6,7 +6,7 @@ class UserProfile(models.Model):
     follows = models.ManyToManyField('self', related_name='followed_by', symmetrical=False)
     avatar = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
-User.oinkerprofile = property(lambda u:UserProfile.objects.get_or_create(user=u)[0])
+User.UserProfile = property(lambda u:UserProfile.objects.get_or_create(user=u)[0])
 
 
 class POST(models.Model):
