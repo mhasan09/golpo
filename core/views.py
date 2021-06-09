@@ -49,7 +49,7 @@ def feed(requests):
         'query': query,
         'users': users
     }
-    return render(requests, 'core/feed.html', context)
+    return render(requests, 'core/feed2.html', context)
 
 
 def profile(requests, username):
