@@ -5,28 +5,7 @@ from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import POST
-
-
-@login_required
-def feed(requests):
-    user_id_list = [requests.user.id]
-    current_user = requests.user
-    for i in current_user.UserProfile.follows.all():
-        user_id_list.append(i.user.id)
-    posts = POST.objects.filter(created_by_id__in=user_id_list)
-    query = requests.GET.get('query', '')
-    if len(query) > 0:
-        users = User.objects.filter(username__icontains=query)
-    else:
-        users = []
-    context = {
-        "username": current_user,
-        "posts": posts,
-        'query': query,
-        'users': users
-    }
-    return render(requests, 'core/feed.html', context)
-
+from django.shortcuts import get_object_or_404
 
 
 def signup(request):
@@ -50,3 +29,32 @@ def signin(request):
             return redirect('feed')
 
     return render(request, 'core/sign-in.html')
+
+
+@login_required
+def feed(requests):
+    user_id_list = [requests.user.id]
+    current_user = requests.user
+    for i in current_user.UserProfile.follows.all():
+        user_id_list.append(i.user.id)
+    posts = POST.objects.filter(created_by_id__in=user_id_list)
+    query = requests.GET.get('query', '')
+    if len(query) > 0:
+        users = User.objects.filter(username__icontains=query)
+    else:
+        users = []
+    context = {
+        "username": current_user,
+        "posts": posts,
+        'query': query,
+        'users': users
+    }
+    return render(requests, 'core/feed.html', context)
+
+
+def profile(requests, username):
+    user = get_object_or_404(User, username=username)
+    context = {
+        'user': user
+    }
+    return render(requests, 'core/profile.html', context)
