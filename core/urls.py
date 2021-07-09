@@ -20,7 +20,9 @@ urlpatterns = [
     path('', views.feed, name="feed"),
     path('signin/', views.signin, name="signin"),
     path('api/add_post/', api.api_POST, name="api_add_post"),
-    path('<str:username>/', views.profile, name="profile"),
+    path('profile/<str:username>', views.profile, name="profile"),
+    path('profile/<str:username>/follow', views.follow_profile, name="follow_profile"),
+    path('profile/<str:username>/unfollow', views.unfollow_profile, name="unfollow_profile"),
 
 
 ]

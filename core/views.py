@@ -58,3 +58,17 @@ def profile(requests, username):
         'user': user
     }
     return render(requests, 'core/profile.html', context)
+
+
+@login_required
+def follow_profile(requests, username):
+    user = get_object_or_404(User, username=username)
+    requests.user.userprofile.follows.add(user.userprofile)
+    return redirect('profile', username=username)
+
+
+@login_required
+def unfollow_profile(requests, username):
+    user = get_object_or_404(User, username=username)
+    requests.user.userprofile.follows.remove(user.userprofile)
+    return redirect('profile', username=username)
