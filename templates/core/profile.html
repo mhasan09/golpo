@@ -30,7 +30,9 @@
                                             </li>
                                             <li class="text-center pl-3">
                                                 <h6>Followers</h6>
+                                                <a href="{% url 'followers' user.username %}">
                                                 <p class="mb-0">{{ user.userprofile.followed_by.count }}</p>
+                                                </a>
                                             </li>
                                             <li class="text-center pl-3">
                                                 <h6>Following</h6>
