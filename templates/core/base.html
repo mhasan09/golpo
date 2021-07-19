@@ -30,7 +30,7 @@
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
                     <li class="active">
-                        <a href="index.html" class=""
+                        <a href="#" class=""
                         ><i class="las la-newspaper"></i><span>Newsfeed</span></a
                         >
                     </li>
@@ -60,9 +60,9 @@
         <div class="iq-navbar-custom">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="iq-navbar-logo d-flex justify-content-between">
-                    <a href="index.html">
+                    <a href="{% url 'feed' %}">
                         <img
-                                src="{% static '' %}images/logo.png"
+                                src="{% static 'images/logo.png' %}"
                                 class="img-fluid"
                                 alt=""
                         />
@@ -99,7 +99,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-list">
                         <li>
-                            <a href="{% url 'profile' user  %}" class="d-flex align-items-center">
+                            <a href="{% url 'profile' user %}" class="d-flex align-items-center">
                                 <img
                                         src="{% static 'images/user/11.jpg' %}"
                                         class="img-fluid rounded-circle mr-3"
