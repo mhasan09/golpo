@@ -1,6 +1,13 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto \9; /* ie8 */
+        }
+    </style>
     <div id="content-page" class="content-page">
         <div class="container">
             <div class="row">
@@ -45,24 +52,24 @@
                                         </div>
                                     </div>
                                     <div class="iq-card-body">
-
+                                        <form method="POST" enctype="multipart/form-data" action=".">
                                             {% if user.userprofile.avatar %}
-                                            <div class="form-group row align-items-center">
-                                                <div class="col-md-12">
-                                                    <div class="profile-img-edit">
-                                                        <img class="profile-pic" src="{{ user.userprofile.avatar.url }}"
-                                                             alt="profile-pic">
-                                                        <div class="p-image">
-                                                            <i class="ri-pencil-line upload-button"></i>
-                                                            <input class="file-upload" type="file" accept="image/*"/>
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-md-12">
+                                                        <div class="profile-img-edit">
+                                                            <img class="profile-pic" style="max-width: 80%" src="{{ user.userprofile.avatar.url }}"
+                                                                 alt="profile-pic">
+                                                            {% comment %}<div class="p-image">
+                                                                <i class="ri-pencil-line upload-button"></i>
+                                                                <input class="file-upload" type="file" accept="image/*"/>
+                                                            </div>{% endcomment %}
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             {% endif %}
-                                     <form method="POST" enctype="multipart/form-data" action=".">
-                                         {% csrf_token %}
-                                         {{ form.as_p }}
+
+                                            {% csrf_token %}
+                                            {{ form.as_p }}
                                             {% comment %}<div class=" row align-items-center">
                                                 <div class="form-group col-sm-6">
                                                     <label for="fname">First Name:</label>

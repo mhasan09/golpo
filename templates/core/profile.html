@@ -31,13 +31,13 @@
                                             <li class="text-center pl-3">
                                                 <h6>Followers</h6>
                                                 <a href="{% url 'followers' user.username %}">
-                                                <p class="mb-0">{{ user.userprofile.followed_by.count }}</p>
+                                                    <p class="mb-0">{{ user.userprofile.followed_by.count }}</p>
                                                 </a>
                                             </li>
                                             <li class="text-center pl-3">
                                                 <h6>Following</h6>
                                                 <a href="{% url 'follows' user.username %}">
-                                                <p class="mb-0">{{ user.userprofile.follows.count }}</p>
+                                                    <p class="mb-0">{{ user.userprofile.follows.count }}</p>
                                                 </a>
                                             </li>
                                         </ul>
@@ -60,14 +60,14 @@
                                                 </ul>
                                             </div>
                                         {% endif %}
-                                        {% else %}
+                                    {% else %}
                                         <div class="social-links">
-                                                <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
-                                                    <a href="{% url 'edit_profile' %}">
-                                                        <button class="btn btn-primary mr-2">Edit Profile</button>
-                                                    </a>
-                                                </ul>
-                                            </div>
+                                            <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
+                                                <a href="{% url 'edit_profile' %}">
+                                                    <button class="btn btn-primary mr-2">Edit Profile</button>
+                                                </a>
+                                            </ul>
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>
