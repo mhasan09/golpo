@@ -74,7 +74,11 @@ def unfollow_profile(requests, username):
     return redirect('profile', username=username)
 
 
-@login_required
 def followers(requests, username):
     user = get_object_or_404(User, username=username)
-    return render(requests, 'core/friend-list.html', {'user':user})
+    return render(requests, 'core/followers.html', {'user': user})
+
+
+def follows(requests, username):
+    user = get_object_or_404(User, username=username)
+    return render(requests, 'core/follows.html', {'user': user})
