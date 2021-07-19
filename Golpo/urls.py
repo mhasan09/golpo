@@ -19,10 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.views import signup
 from django.contrib.auth import views
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('signup/', signup, name="signup"),
-    path('logout/', views.LogoutView.as_view(), name="logout"),
-    path((''), include('core.urls')),
+from django.conf.urls.static import static
+from django.conf import settings
 
-]
+urlpatterns = [
+                  path('admin/', admin.site.urls),
+                  path('signup/', signup, name="signup"),
+                  path('logout/', views.LogoutView.as_view(), name="logout"),
+                  path((''), include('core.urls')),
+
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

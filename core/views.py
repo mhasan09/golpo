@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from .models import POST
+from .models import POST, UserProfile
 from django.shortcuts import get_object_or_404
 
 
@@ -82,3 +82,21 @@ def followers(requests, username):
 def follows(requests, username):
     user = get_object_or_404(User, username=username)
     return render(requests, 'core/follows.html', {'user': user})
+
+
+@login_required
+def edit_profile(requests):
+    if requests.method == "POST":
+        form = UserProfileForm(requests.POST, requests.FILES, instance=requests.user.userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', username=requests.user.username)
+
+    else:
+        form = UserProfileForm(instance=requests.user.userprofile)
+
+    context = {
+        'user': requests.user,
+        'form': form
+    }
+    return render(requests, 'core/edit_profile.html', context)
