@@ -100,16 +100,20 @@
                     <ul class="navbar-nav ml-auto navbar-list">
                         <li>
                             <a href="{% url 'profile' user %}" class="d-flex align-items-center">
-                                <img
-                                        src="{% static 'images/user/11.jpg' %}"
-                                        class="img-fluid rounded-circle mr-3"
-                                        alt="user"
-                                />
+                                {% if user.userprofile.avatar %}
+
+                                    <img
+                                            src="{{ user.userprofile.avatar.url }}"
+                                            class="img-fluid rounded-circle mr-3"
+                                            alt="user"
+                                    />
+                                {% endif %}
                                 <div class="caption">
-                                    <h6 class="mb-0 line-height">{{ username }}</h6>
+                                    <h6 class="mb-0 line-height">{{ user }}</h6>
                                 </div>
                             </a>
                         </li>
+
                         <li>
                             <a href="index.html" class="d-flex align-items-center">
                                 <i class="ri-home-line"></i>

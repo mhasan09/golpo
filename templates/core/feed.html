@@ -146,16 +146,16 @@
                     </div>
                     {% for i in posts %}
                         <div class="col-sm-12">
-
                             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                                 <div class="iq-card-body">
                                     <div class="user-post-data">
                                         <div class="d-flex flex-wrap">
+                                            {% if i.created_by.userprofile.avatar %}
                                             <div class="media-support-user-img mr-3">
                                                 <img class="img-fluid rounded-circle mr-3"
-                                                     src="{% static 'images/user/1.jpg' %}" alt=""/>
+                                                     src="{{ i.created_by.userprofile.avatar.url }}" alt=""/>
                                             </div>
-
+                                            {% endif %}
                                             <div class="media-support-info mt-2">
                                                 <h5 class="mb-0 d-inline-block">
                                                     <a href="#" class="">{{ i.created_by.username }}</a>

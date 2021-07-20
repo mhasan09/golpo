@@ -13,10 +13,12 @@
                                          class="rounded img-fluid">
                                 </div>
                                 <div class="user-detail text-center mb-3">
+                                    {% if user.userprofile.avatar %}
                                     <div class="profile-img">
-                                        <img src="{% static 'images/user/11.jpg' %}" alt="profile-img"
+                                        <img src="{{ user.userprofile.avatar.url }}" alt="profile-img"
                                              class="avatar-130 img-fluid"/>
                                     </div>
+                                    {% endif %}
                                     <div class="profile-detail">
                                         <h3 class="">{{ user }}</h3>
                                     </div>
@@ -100,29 +102,24 @@
                                         <div class="iq-card">
                                             <div class="iq-card-header d-flex justify-content-between">
                                                 <div class="iq-header-title">
-                                                    <h4 class="card-title">Friends</h4>
+                                                    <h4 class="card-title">Followers</h4>
                                                 </div>
                                                 <div class="iq-card-header-toolbar d-flex align-items-center">
                                                     <p class="m-0"><a href="">Add New </a></p>
                                                 </div>
                                             </div>
+                                            {% for i in user.userprofile.follows.all %}
                                             <div class="iq-card-body">
                                                 <ul class="profile-img-gallary d-flex flex-wrap p-0 m-0">
                                                     <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
                                                         <a href="">
-                                                            <img src="{% static 'images/page-img/adisha.jpg' %}"
+                                                            <img src="{{ i.user.userprofile.avatar.url }}"
                                                                  alt="gallary-image" class="img-fluid"/></a>
-                                                        <h6 class="mt-2">Adisha Islam</h6>
-                                                    </li>
-                                                    <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
-                                                        <a href="">
-                                                            <img src="{% static 'images/page-img/pakku.jpg' %}"
-                                                                 alt="gallary-image" class="img-fluid"/></a>
-                                                        <h6 class="mt-2">Hina Altaf</h6>
+                                                        <h6 class="mt-2">{{ i.user.username }}</h6>
                                                     </li>
                                                 </ul>
-
                                             </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
