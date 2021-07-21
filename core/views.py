@@ -43,6 +43,13 @@ def feed(requests):
         users = User.objects.filter(username__icontains=query)
     else:
         users = []
+    for post in posts:
+        likes = post.likes.filter(created_by_id=requests.user.id)
+        if likes.count() > 0:
+            post.liked = True
+        else:
+            post.liked = False
+
     context = {
         "username": current_user,
         "posts": posts,
