@@ -12,8 +12,10 @@ def api_POST(request):
     POST.objects.create(body=post_body, created_by=request.user)
     return JsonResponse({'success': True})
 
-# def api_add_likes(request):
-#     data = json.loads(request.body)
-#     post_id = data['post_id']
-#
-#     if not Like.objects.filter()
+def api_add_likes(request):
+    data = json.loads(request.body)
+    post_id = data['post_id']
+    if not Like.objects.filter(post_id=post_id).filter(created_by=request.user).exists():
+        like = Like.objects.create(post_id=post_id,created_by=request.user)
+
+    return JsonResponse({'success':True})

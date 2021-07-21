@@ -25,7 +25,7 @@
                             <div class="iq-card-body">
                                 <div class="user-post-data">
                                     <div class="d-flex flex-wrap">
-                                         <div class="media-support-user-img mr-3">
+                                        <div class="media-support-user-img mr-3">
                                             <img class="img-fluid rounded-circle mr-3"
                                                  :src="i.avatar" alt=""/>
                                         </div>
@@ -42,6 +42,60 @@
                                 <div class="mt-3">
                                     <p>[[ i.post_body ]]</p>
                                 </div>
+                                <div class="comment-area mt-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="like-block position-relative d-flex align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="like-data">
+                                                        <div class="dropdown">
+                                                             <img src="{% static 'images/icon/01.png' %}" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="total-like-block ml-2 mr-3">
+                                                        <div class="dropdown">
+                                                <span class="dropdown-toggle" role="button">
+                                                140 Likes
+                                                </span>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="#">Max Emum</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="total-comment-block">
+                                                    <div class="dropdown">
+                                             <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                             20 Comments
+                                             </span>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Max Emum</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <ul class="post-comments p-0 m-0">
+                                            <li class="mb-2">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="user-img">
+                                                        <img src="{% static 'images/user/02.jpg' %}" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                                                    </div>
+                                                    <div class="comment-data-block ml-3">
+                                                        <h6>Monty Carlo</h6>
+                                                        <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                                        <div class="d-flex flex-wrap align-items-center comment-activity">
+                                                            <a href="javascript:void();">like</a>
+                                                            <span> 5 min </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
+                                            <input type="text" class="form-control rounded">
+                                        </form>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -61,7 +115,7 @@
                                                 <h5 class="mb-0 d-inline-block">
                                                     <a href="#" class="">{{ i.created_by.username }}</a>
                                                 </h5>
-{#                                                <p class="mb-0 d-inline-block">Add New Post</p>#}
+                                                {#                                                <p class="mb-0 d-inline-block">Add New Post</p>#}
                                                 <p class="mb-0 text-primary">{{ i.created_at|naturaltime }}</p>
                                             </div>
                                         </div>
@@ -69,11 +123,64 @@
                                     <div class="mt-3">
                                         <p>{{ i.body }}</p>
                                     </div>
+                                    <div class="comment-area mt-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="like-block position-relative d-flex align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="like-data">
+                                                        <div class="dropdown">
+                                                             <img src="{% static 'images/icon/01.png' %}" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="total-like-block ml-2 mr-3">
+                                                        <div class="dropdown">
+                                                <span class="dropdown-toggle" role="button">
+                                                140 Likes
+                                                </span>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="#">Max Emum</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="total-comment-block">
+                                                    <div class="dropdown">
+                                             <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                             20 Comments
+                                             </span>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Max Emum</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <ul class="post-comments p-0 m-0">
+                                            <li class="mb-2">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="user-img">
+                                                        <img src="{% static 'images/user/02.jpg' %}" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                                                    </div>
+                                                    <div class="comment-data-block ml-3">
+                                                        <h6>Monty Carlo</h6>
+                                                        <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                                        <div class="d-flex flex-wrap align-items-center comment-activity">
+                                                            <a href="javascript:void();">like</a>
+                                                            <span> 5 min </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
+                                            <input type="text" class="form-control rounded">
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
                 {% comment %} <div class="col-sm-12 text-center">
                     <img src="{% static 'images/page-img/page-load-loader.gif' %}" alt="loader" style="height: 100px"/>
@@ -84,10 +191,10 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         var getStatus = {
-            delimiters: ['[[',']]'],
+            delimiters: ['[[', ']]'],
             data() {
                 return {
-                    posts:[],
+                    posts: [],
                     message: "",
                     created_by: '{{ username }}',
                     created_at: 'now',
@@ -107,7 +214,7 @@
                         this.posts.unshift(post_dict);
 
                     }
-                    console.log("here we go",post_dict)
+                    console.log("here we go", post_dict)
 
                     this.message = '';
                     fetch('/api/add_post/', {
