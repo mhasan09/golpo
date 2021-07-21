@@ -17,7 +17,7 @@
                             <form class="post-text ml-3 w-100" action=".">
                                 <input type="text" v-model="message" class="form-control rounded" placeholder="Write something here..." style="border:none;">
                             </form>
-                            <button type="submit" @click.prevent="submitData()" class="btn btn-primary d-block w-100 mt-3">Post</button>
+                            <button type="submit" @click.prevent="submitData()" class="btn btn-primary d-block mt-3">Post</button>
                         </div>
                     </div>
                     <div class="col-sm-12" :key="i.id" v-for="i in posts">
@@ -31,16 +31,13 @@
                                         </div>
                                         <div class="media-support-info mt-2">
                                             <h5 class="mb-0 d-inline-block">
-                                                <a href="#" class="">{{ i.username }}</a>
                                                 <a href="#" class="">[[ i.username ]]</a>
                                             </h5>
-                                            <p class="mb-0 text-primary">{{ i.created_at }}</p>
                                             <p class="mb-0 text-primary">[[ i.created_at ]]</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-{#                                    <p>{{ i.post_body }}</p>#}
                                     <p>[[ i.post_body ]]</p>
                                 </div>
                             </div>
