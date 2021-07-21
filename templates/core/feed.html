@@ -14,133 +14,34 @@
                                     <h4 class="card-title">Create Post</h4>
                                 </div>
                             </div>
-                            <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
-                                <div class="d-flex align-items-center">
-                                    <form
-                                            class="post-text ml-3 w-100"
-                                            action="javascript:void();">
-                                        <input
-                                                type="text"
-                                                class="form-control rounded"
-                                                placeholder="Write something here..."
-                                                style="border: none"
-                                        />
-                                    </form>
-                                </div>
-                                <hr/>
-                            </div>
-                            <div
-                                    class="modal fade"
-                                    id="post-modal"
-                                    tabindex="-1"
-                                    role="dialog"
-                                    aria-labelledby="post-modalLabel"
-                                    aria-hidden="true"
-                                    style="display: none"
-                            >
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="post-modalLabel">
-                                                Create Post
-                                            </h5>
-                                            <button
-                                                    type="button"
-                                                    class="btn btn-secondary"
-                                                    data-dismiss="modal"
-                                            >
-                                                <i class="ri-close-fill m-0"></i>
-                                            </button>
+                            <form class="post-text ml-3 w-100" action=".">
+                                <input type="text" v-model="message" class="form-control rounded" placeholder="Write something here..." style="border:none;">
+                            </form>
+                            <button type="submit" @click.prevent="submitData()" class="btn btn-primary d-block w-100 mt-3">Post</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" :key="i.id" v-for="i in posts">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-body">
+                                <div class="user-post-data">
+                                    <div class="d-flex flex-wrap">
+                                         <div class="media-support-user-img mr-3">
+                                            <img class="img-fluid rounded-circle mr-3"
+                                                 :src="i.avatar" alt=""/>
                                         </div>
-                                        <div class="modal-body" id="status">
-                                            <div class="d-flex align-items-center">
-                                                <form
-                                                        class="post-text ml-3 w-100"
-                                                        action="javascript:void();"
-                                                >
-                                                    <input
-                                                            type="text"
-                                                            class="form-control rounded"
-                                                            v-model="message"
-                                                            placeholder="test"
-                                                            style="border: none"
-                                                    />
-                                                </form>
-                                            </div>
-                                            <div class="other-option">
-                                                <div
-                                                        class="
-                                d-flex
-                                align-items-center
-                                justify-content-between
-                              "
-                                                >
-                                                    <div class="iq-card-post-toolbar">
-                                                        <div class="dropdown">
-                                                            <span class="dropdown-toggle" data-toggle="dropdown"
-                                                                  aria-haspopup="true" aria-expanded="false"
-                                                                  role="button"></span>
-                                                            <div class="dropdown-menu m-0 p-0">
-                                                                <a class="dropdown-item p-3" href="#">
-                                                                    <div class="d-flex align-items-top">
-                                                                        <div class="icon font-size-20">
-                                                                            <i class="ri-save-line"></i>
-                                                                        </div>
-                                                                        <div class="data ml-2">
-                                                                            <h6>Public</h6>
-                                                                            <p class="mb-0">
-                                                                                Anyone on or off Facebook
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                                <a class="dropdown-item p-3" href="#">
-                                                                    <div class="d-flex align-items-top">
-                                                                        <div class="icon font-size-20">
-                                                                            <i class="ri-close-circle-line"></i>
-                                                                        </div>
-                                                                        <div class="data ml-2">
-                                                                            <h6>Friends</h6>
-                                                                            <p class="mb-0">
-                                                                                Your Friend on facebook
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                                <a class="dropdown-item p-3" href="#">
-                                                                    <div class="d-flex align-items-top">
-                                                                        <div class="icon font-size-20">
-                                                                            <i class="ri-user-unfollow-line"></i>
-                                                                        </div>
-                                                                        <div class="data ml-2">
-                                                                            <h6>Friends except</h6>
-                                                                            <p class="mb-0">
-                                                                                Don't show to some friends
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                                <a class="dropdown-item p-3" href="#">
-                                                                    <div class="d-flex align-items-top">
-                                                                        <div class="icon font-size-20">
-                                                                            <i class="ri-notification-line"></i>
-                                                                        </div>
-                                                                        <div class="data ml-2">
-                                                                            <h6>Only Me</h6>
-                                                                            <p class="mb-0">Only me</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary d-block w-100 mt-3" v-on:click="submitData">
-                                                Post
-                                            </button>
+                                        <div class="media-support-info mt-2">
+                                            <h5 class="mb-0 d-inline-block">
+                                                <a href="#" class="">{{ i.username }}</a>
+                                                <a href="#" class="">[[ i.username ]]</a>
+                                            </h5>
+                                            <p class="mb-0 text-primary">{{ i.created_at }}</p>
+                                            <p class="mb-0 text-primary">[[ i.created_at ]]</p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mt-3">
+{#                                    <p>{{ i.post_body }}</p>#}
+                                    <p>[[ i.post_body ]]</p>
                                 </div>
                             </div>
                         </div>
@@ -173,30 +74,7 @@
                             </div>
                         </div>
                     {% endfor %}
-                    <div class="col-sm-12" v-for="i in post_dict">
-                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                            <div class="iq-card-body">
-                                <div class="user-post-data">
-                                    <div class="d-flex flex-wrap">
-                                        <div class="media-support-user-img mr-3">
-                                            <img class="img-fluid rounded-circle mr-3"
-                                                 :src="i.avatar" alt=""/>
-                                        </div>
-                                        <div class="media-support-info mt-2">
-                                            <h5 class="mb-0 d-inline-block">
-                                                <a href="#" class="">{{ i.username }}</a>
-                                            </h5>
-                                            <p class="mb-0 d-inline-block">Add New Post</p>
-                                            <p class="mb-0 text-primary">{{ i.created_at }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <p>{{ i.body }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 {% comment %} <div class="col-sm-12 text-center">
                     <img src="{% static 'images/page-img/page-load-loader.gif' %}" alt="loader" style="height: 100px"/>
@@ -207,27 +85,32 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         var getStatus = {
+            delimiters: ['[[',']]'],
             data() {
                 return {
+                    posts:[],
                     message: "",
                     created_by: '{{ username }}',
                     created_at: 'now',
-                    'avatar': '{% if requests.user.userprofile.avatar %}{{ requests.user.userprofile.avatar.url }}{% endif %}'
+                    'avatar': '{% if request.user.userprofile.avatar %}{{ request.user.userprofile.avatar.url }}{% endif %}'
                 };
             },
             methods: {
                 submitData() {
+
                     if (this.message.length > 0) {
                         var post_dict = {
                             'post_body': this.message,
                             'username': this.created_by,
-                            'created_at': 'now',
+                            'created_at': this.created_at,
                             'avatar': this.avatar
                         }
+                        this.posts.unshift(post_dict);
+
                     }
-                    console.log(post_dict)
-                    this.body = '';
-                    console.log("Done")
+                    console.log("here we go",post_dict)
+
+                    this.message = '';
                     fetch('/api/add_post/', {
                         method: 'POST',
                         headers: {
@@ -239,7 +122,7 @@
 
                     })
                         .then((response) => {
-                            console.log(response)
+                                console.log(response)
 
                             }
                         )
@@ -250,7 +133,7 @@
             },
         };
 
-        Vue.createApp(getStatus).mount("#status");
+        Vue.createApp(getStatus).mount("#content-page");
     </script>
 
 {% endblock %}
